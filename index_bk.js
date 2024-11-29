@@ -23,7 +23,7 @@ const server=http.createServer((req,res)=>{
     
     if(req.url="/"){
        requests(
-        "https://api.openweathermap.org/data/2.5/weather?q=Pune&appid=cab4ee95ba04cbf9117a43d5c7b1110f",
+        "https://api.openweathermap.org/data/2.5/weather?q=Pune&appid=f3097fa7578a291cf093a4c518019b4e",
         
         ).on("data",(chunk)=>{
             const objdata=JSON.parse(chunk);
