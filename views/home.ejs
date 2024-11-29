@@ -1,0 +1,187 @@
+
+<link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"/>
+<style>
+    body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: url('https://blog.stackfindover.com/wp-content/uploads/2021/10/wave-background-animation.gif') repeat-x; /* Replace with the actual path to your wave image */
+    animation: wave-animation 1s infinite linear;
+
+    background-color: white; 
+}
+
+.box {
+    position: relative;
+    background-color:whitesmoke;
+    border-radius: 20px;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 400px; 
+    height: 390px;/* Adjust the width as needed */
+    justify-content: center;
+    align-items: center;
+    display: flex;
+
+}
+
+.wave {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    
+    
+}
+
+@keyframes wave-animation {
+    0% {
+        background-position-x: 0;
+    }
+    100% {
+        background-position-x: 100%;
+    }
+}
+
+.wave.-one {
+    bottom: 10%;
+}
+
+.wave.-two {
+    bottom: 20%;
+    animation-delay: -0.4s;
+}
+
+.wave.-three {
+    bottom: 30%;
+    animation-delay: -0.8s;
+}
+
+.fa-street-view{
+    animation: rotates 3s linear infinite alternate;
+}
+@keyframes rotates{
+    from{
+        transform:translateX(-0.5rem);
+    }
+    to{
+        transform:translateX(0.5rem);
+
+    }
+    
+} 
+
+#weathercon {
+    height: 29%;
+    display:flex;
+    justify-content: center;
+    font-size: 1rem;
+    align-items: center;
+}
+#weathercon .fas{
+    font-size: 4rem;
+    animation: fas-anime 3s linear infinite alternate;
+}
+
+
+.info {
+    text-align: center;
+    
+    padding: 20px;
+    
+
+}
+
+.location {
+    margin: 5px 0;
+    font-size: 18px;
+}
+
+#date {
+    margin: 0;
+    color: #777;
+}
+
+
+
+
+/* CSS */
+.button-7 {
+  background-color: #0095ff;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  box-shadow: rgba(255, 255, 255, .4) 0 1px 0 0 inset;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system,system-ui,"Segoe UI","Liberation Sans",sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.15385;
+  margin: 0;
+  outline: none;
+  padding: 8px .8em;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  white-space: nowrap;
+}
+
+.button-7:hover,
+.button-7:focus {
+  background-color: #07c;
+}
+
+.button-7:focus {
+  box-shadow: 0 0 0 4px rgba(0, 149, 255, .15);
+}
+
+.button-7:active {
+  background-color: #0064bd;
+  box-shadow: none;
+}
+
+.temp {
+    margin: 10px 0;
+    font-size: 36px;
+    color: #eccc68;
+}
+
+.tempmin_max {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #777;
+}
+.city {
+    margin: 10px 0;
+    font-size: 10px;
+    color: #eccc68;
+}
+
+
+</style>
+<div class="box">
+    
+    <form action="/" method="POST"> 
+        <!-- Creating the parameter Username as type= "text"-->
+        <div id="weathercon">
+            <i class="fas fa-city" style="color: #000000;"></i>
+        </div>
+        <div class="info">
+            
+        
+        <label class="location">Enter City: </label> 
+        <input type="text" placeholder="City" name="city"><br><br> 
+        <button class="button-7">Get RealTime Weather</button> 
+    </div>
+    </form> 
+
+</div>

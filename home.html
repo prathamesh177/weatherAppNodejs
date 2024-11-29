@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
+    <title>Weather App</title>
+</head>
+<body>
+    <div class="box">
+        <div class="wave -one"></div>
+        <div class="wave -two"></div>
+        <div class="wave -three"></div>
+        <div id="weathercon">
+            <i class="fas fa-sun" style="color: #eccc68;"></i>
+        </div>
+        <div class="info">
+            <h2 class="location"><i class="fas fa-street-view"></i>{%location%},{%country%}</h2>
+            <p id="day"></p>
+            <p id="dateTime"></p>
+            <h1 class="temp">{%tempval%}&deg;C</h1>
+            <h3 class="tempmin_max">Min {%tempmin%}&deg;C | Max {%tempmax%}&deg;C </h3>
+        </div>
+    </div>
+
+    <script>
+        const curDay = document.getElementById("day");
+        const curDateTime = document.getElementById("dateTime");
+        const weathercon = document.getElementById("weathercon");
+        const tempStatus = "{%tempstatus%}";
+
+        if (tempStatus === "sunny") {
+            weathercon.innerHTML = "<i class='fas fa-sun' style='color:#eccc68;'></i>";
+        /*}else if (tempStatus === "Smoke") {
+            weathercon.innerHTML = "<i class='fas fa-sun' style='color:#eccc68;'></i>";*/  
+        } else if (tempStatus === "Clouds") {
+            weathercon.innerHTML = "<i class='fas fa-cloud' style='color:lightblue;'></i>";
+        } else if (tempStatus === "Rainy") {
+            weathercon.innerHTML = "<i class='fas fa-cloud-rain' style='color:#a4b0be;'></i>";
+        } else {
+            weathercon.innerHTML = "<i class='fas fa-cloud' style='color:#44c3de;'></i>";
+        }
+
+        const getCurrentDay = () => {
+            const weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+            const currentTime = new Date();
+            const day = weekday[currentTime.getDay()];
+            return day;
+        };
+
+        const getcurrentTime = () => {
+            const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+            const now = new Date();
+            const month = months[now.getMonth()];
+            const date = now.getDate();
+            let hours = now.getHours();
+            let mins = now.getMinutes();
+            const periods = hours >= 12 ? "PM" : "AM";
+            hours = hours % 12 || 12;
+            mins = mins < 10 ? "0" + mins : mins;
+            return `  ${month} ${date} | ${hours}:${mins} ${periods}`;
+        };
+        curDay.innerHTML = getCurrentDay()+" "+"|"+" "+getcurrentTime();;
+        
+    </script>
+
+    <style>
+    body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: url('https://blog.stackfindover.com/wp-content/uploads/2021/10/wave-background-animation.gif') repeat-x; /* Replace with the actual path to your wave image */
+    animation: wave-animation 1s infinite linear;
+
+    background-color: white; 
+}
+
+.box {
+    position: relative;
+    background-color:whitesmoke;
+    border-radius: 20px;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 400px; 
+    height: 390px;/* Adjust the width as needed */
+}
+
+.wave {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    
+    
+}
+
+@keyframes wave-animation {
+    0% {
+        background-position-x: 0;
+    }
+    100% {
+        background-position-x: 100%;
+    }
+}
+
+.wave.-one {
+    bottom: 10%;
+}
+
+.wave.-two {
+    bottom: 20%;
+    animation-delay: -0.4s;
+}
+
+.wave.-three {
+    bottom: 30%;
+    animation-delay: -0.8s;
+}
+
+.fa-street-view{
+    animation: rotates 3s linear infinite alternate;
+}
+@keyframes rotates{
+    from{
+        transform:translateX(-0.5rem);
+    }
+    to{
+        transform:translateX(0.5rem);
+
+    }
+    
+} 
+
+#weathercon {
+    height: 55%;
+    display:flex;
+    justify-content: center;
+    font-size: 1rem;
+    align-items: center;
+}
+#weathercon .fas{
+    font-size: 4rem;
+    animation: fas-anime 3s linear infinite alternate;
+}
+@keyframes fas-anime {
+    from{
+        transform: scale(0.8);
+    }
+    to{
+        transform: scale(1.2);
+    }
+    
+}
+
+.info {
+    text-align: center;
+    padding: 20px;
+}
+
+.location {
+    margin: 5px 0;
+    font-size: 18px;
+}
+
+#date {
+    margin: 0;
+    color: #777;
+}
+
+.temp {
+    margin: 10px 0;
+    font-size: 36px;
+    color: #eccc68;
+}
+
+.tempmin_max {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #777;
+}
+</style>
+</body>
+</html>
